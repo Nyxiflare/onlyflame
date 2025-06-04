@@ -16,31 +16,31 @@ const Index = () => {
       title: "Keep 100% of Earnings",
       description: "No platform fees. Every dollar goes directly to you.",
       icon: DollarSign,
-      color: "text-flame-orange"
+      color: "text-brand-primary"
     },
     {
       title: "Instant Crypto Payments",
       description: "Get paid instantly in crypto, no waiting periods.",
       icon: Zap,
-      color: "text-purple-400"
+      color: "text-brand-secondary"
     },
     {
       title: "Fan Ownership",
       description: "Your fans own tokens, creating deeper engagement.",
       icon: Heart,
-      color: "text-flame-pink"
+      color: "text-brand-accent"
     },
     {
       title: "Token Economy",
       description: "Create your own economy with custom tokenomics.",
       icon: Coins,
-      color: "text-flame-yellow"
+      color: "text-brand-warning"
     },
     {
       title: "You Own Everything",
       description: "Complete control over your content and community.",
       icon: Shield,
-      color: "text-flame-green"
+      color: "text-brand-success"
     },
     {
       title: "Early Creator Rewards",
@@ -64,25 +64,25 @@ const Index = () => {
       title: "Apply & Get Approved",
       description: "Submit your application and get approved for our exclusive program.",
       icon: Star,
-      color: "text-flame-orange"
+      color: "text-brand-primary"
     },
     {
       title: "Onboarding Call",
       description: "Personal consultation to design your token strategy.",
       icon: User,
-      color: "text-purple-400"
+      color: "text-brand-secondary"
     },
     {
       title: "Launch Your Token",
       description: "We'll help you launch your token with full technical support.",
       icon: Rocket,
-      color: "text-flame-pink"
+      color: "text-brand-accent"
     },
     {
       title: "Earn & Scale",
       description: "Start earning instantly and scale your creator economy.",
       icon: DollarSign,
-      color: "text-flame-yellow"
+      color: "text-brand-warning"
     }
   ];
 
@@ -96,15 +96,15 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-900/20 to-black font-inter">
+    <div className="min-h-screen bg-gradient-to-br from-black via-indigo-900/20 to-black font-inter">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-gradient-to-r from-black/90 via-purple-900/30 to-black/90 backdrop-blur-sm border-b border-purple-500/20">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-black/90 via-indigo-900/30 to-black/90 backdrop-blur-sm border-b border-indigo-500/20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className={`flex items-center space-x-3 ${isVisible ? 'animate-bounce-in' : 'opacity-0'}`}>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-flame-orange to-flame-red p-2 animate-glow-pulse hover:scale-110 transition-transform duration-300">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-primary to-brand-secondary p-2 animate-glow-pulse hover:scale-110 transition-transform duration-300">
                 <img 
-                  src="/lovable-uploads/a408a91b-8df2-4d5d-86f0-95968d99cb8b.png" 
+                  src="/lovable-uploads/fe68abea-d36f-4339-8a82-66b2672c4756.png" 
                   alt="OnlyFlame Logo" 
                   className="w-full h-full object-contain"
                 />
@@ -113,11 +113,11 @@ const Index = () => {
             </div>
             
             <nav className={`hidden md:flex items-center space-x-8 ${isVisible ? 'animate-slide-down' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-              <a href="#home" className="text-white hover:text-flame-orange transition-colors">Home</a>
-              <a href="#benefits" className="text-white hover:text-flame-orange transition-colors">Benefits</a>
-              <a href="#how-it-works" className="text-white hover:text-flame-orange transition-colors">How It Works</a>
+              <a href="#home" className="text-white hover:text-brand-primary transition-colors">Home</a>
+              <a href="#benefits" className="text-white hover:text-brand-primary transition-colors">Benefits</a>
+              <a href="#how-it-works" className="text-white hover:text-brand-primary transition-colors">How It Works</a>
               <Button 
-                className={`bg-gradient-to-r from-flame-orange to-flame-red text-white hover:shadow-lg hover:shadow-flame-orange/50 hover:scale-105 transition-all duration-300 ${isVisible ? 'animate-bounce-in' : 'opacity-0'}`}
+                className={`bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:shadow-lg hover:shadow-brand-primary/50 hover:scale-105 transition-all duration-300 ${isVisible ? 'animate-bounce-in' : 'opacity-0'}`}
                 style={{ animationDelay: '0.4s' }}
                 onClick={() => window.open('https://creators.onlyflame.live/', '_blank')}
               >
@@ -130,9 +130,9 @@ const Index = () => {
 
       {/* Hero Section */}
       <section id="home" className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-transparent to-flame-orange/10 animate-gradient-x"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/20 via-transparent to-brand-primary/10 animate-gradient-x"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className={`text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-flame-orange via-flame-pink to-flame-green bg-clip-text text-transparent leading-tight ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          <h1 className={`text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-success bg-clip-text text-transparent leading-tight ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             Own your audience.<br />
             Launch your token.<br />
             Get paid in crypto.
@@ -145,12 +145,12 @@ const Index = () => {
           <div className={`flex flex-col items-center space-y-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-flame-orange to-flame-red text-white text-xl px-8 py-4 hover:shadow-2xl hover:shadow-flame-orange/50 hover:scale-105 transition-all duration-300 animate-glow-pulse"
+              className="bg-gradient-to-r from-brand-primary to-brand-secondary text-white text-xl px-8 py-4 hover:shadow-2xl hover:shadow-brand-primary/50 hover:scale-105 transition-all duration-300 animate-glow-pulse"
               onClick={() => window.open('https://creators.onlyflame.live/', '_blank')}
             >
               Apply Now
             </Button>
-            <div className="flex items-center space-x-2 text-flame-green">
+            <div className="flex items-center space-x-2 text-brand-success">
               <Check className="w-5 h-5" />
               <span className="text-lg font-semibold">Only 47 spots left</span>
             </div>
@@ -169,7 +169,7 @@ const Index = () => {
             {benefits.map((benefit, index) => (
               <Card 
                 key={index} 
-                className={`bg-gradient-to-br from-gray-900/50 to-purple-900/30 border-purple-500/30 hover:border-flame-orange/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-flame-orange/20 group animate-fade-in-up`}
+                className={`bg-gradient-to-br from-gray-900/50 to-indigo-900/30 border-indigo-500/30 hover:border-brand-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-brand-primary/20 group animate-fade-in-up`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-6 text-center">
@@ -186,7 +186,7 @@ const Index = () => {
       </section>
 
       {/* Comparison Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-900/10 to-black/50">
+      <section className="py-20 bg-gradient-to-r from-indigo-900/10 to-black/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">OnlyFans vs OnlyFlame</h2>
@@ -194,8 +194,8 @@ const Index = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-gray-900/50 to-purple-900/30 rounded-lg overflow-hidden border border-purple-500/30">
-              <div className="grid grid-cols-3 bg-gradient-to-r from-flame-orange to-flame-red text-white font-semibold">
+            <div className="bg-gradient-to-r from-gray-900/50 to-indigo-900/30 rounded-lg overflow-hidden border border-indigo-500/30">
+              <div className="grid grid-cols-3 bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-semibold">
                 <div className="p-4 text-center">Feature</div>
                 <div className="p-4 text-center border-l border-white/20">OnlyFans</div>
                 <div className="p-4 text-center border-l border-white/20">OnlyFlame</div>
@@ -204,12 +204,12 @@ const Index = () => {
               {comparison.map((item, index) => (
                 <div 
                   key={index} 
-                  className={`grid grid-cols-3 border-t border-purple-500/20 animate-fade-in-up`}
+                  className={`grid grid-cols-3 border-t border-indigo-500/20 animate-fade-in-up`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="p-4 text-white font-medium">{item.feature}</div>
-                  <div className="p-4 text-red-400 border-l border-purple-500/20">{item.onlyfans}</div>
-                  <div className="p-4 text-flame-green border-l border-purple-500/20 font-semibold">{item.onlyflame}</div>
+                  <div className="p-4 text-red-400 border-l border-indigo-500/20">{item.onlyfans}</div>
+                  <div className="p-4 text-brand-success border-l border-indigo-500/20 font-semibold">{item.onlyflame}</div>
                 </div>
               ))}
             </div>
@@ -233,7 +233,7 @@ const Index = () => {
                   className={`text-center group animate-fade-in-up`}
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-gray-900 to-purple-900 mb-6 group-hover:scale-110 transition-all duration-300 border-2 border-purple-500/30 group-hover:border-flame-orange/50`}>
+                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-gray-900 to-indigo-900 mb-6 group-hover:scale-110 transition-all duration-300 border-2 border-indigo-500/30 group-hover:border-brand-primary/50`}>
                     <step.icon className={`w-10 h-10 ${step.color}`} />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
@@ -246,7 +246,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-flame-orange/10 via-purple-900/20 to-flame-red/10">
+      <section className="py-20 bg-gradient-to-r from-brand-primary/10 via-indigo-900/20 to-brand-secondary/10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
             Ready to Transform Your Creator Economy?
@@ -263,7 +263,7 @@ const Index = () => {
                   className={`flex items-center space-x-3 animate-fade-in-up`}
                   style={{ animationDelay: `${0.3 + index * 0.1}s` }}
                 >
-                  <Check className="w-5 h-5 text-flame-green flex-shrink-0" />
+                  <Check className="w-5 h-5 text-brand-success flex-shrink-0" />
                   <span className="text-gray-300">{benefit}</span>
                 </div>
               ))}
@@ -272,12 +272,12 @@ const Index = () => {
           
           <Button 
             size="lg" 
-            className="bg-gradient-to-r from-flame-orange to-flame-red text-white text-xl px-8 py-4 hover:shadow-2xl hover:shadow-flame-orange/50 hover:scale-105 transition-all duration-300 animate-glow-pulse animate-fade-in-up"
+            className="bg-gradient-to-r from-brand-primary to-brand-secondary text-white text-xl px-8 py-4 hover:shadow-2xl hover:shadow-brand-primary/50 hover:scale-105 transition-all duration-300 animate-glow-pulse animate-fade-in-up"
             style={{ animationDelay: '0.8s' }}
             onClick={() => window.open('https://creators.onlyflame.live/', '_blank')}
           >
             <img 
-              src="/lovable-uploads/a408a91b-8df2-4d5d-86f0-95968d99cb8b.png" 
+              src="/lovable-uploads/fe68abea-d36f-4339-8a82-66b2672c4756.png" 
               alt="Flame" 
               className="w-5 h-5 mr-2"
             />
@@ -287,13 +287,13 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-black/80 border-t border-purple-500/20">
+      <footer className="py-12 bg-black/80 border-t border-indigo-500/20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-3 mb-6 md:mb-0">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-flame-orange to-flame-red p-1.5">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-primary to-brand-secondary p-1.5">
                 <img 
-                  src="/lovable-uploads/a408a91b-8df2-4d5d-86f0-95968d99cb8b.png" 
+                  src="/lovable-uploads/fe68abea-d36f-4339-8a82-66b2672c4756.png" 
                   alt="OnlyFlame Logo" 
                   className="w-full h-full object-contain"
                 />
@@ -302,10 +302,10 @@ const Index = () => {
             </div>
             
             <div className="flex items-center space-x-6 mb-6 md:mb-0">
-              <Twitter className="w-6 h-6 text-gray-400 hover:text-flame-orange transition-colors cursor-pointer hover:scale-110 duration-300" />
-              <Instagram className="w-6 h-6 text-gray-400 hover:text-flame-orange transition-colors cursor-pointer hover:scale-110 duration-300" />
-              <MessageCircle className="w-6 h-6 text-gray-400 hover:text-flame-orange transition-colors cursor-pointer hover:scale-110 duration-300" />
-              <Send className="w-6 h-6 text-gray-400 hover:text-flame-orange transition-colors cursor-pointer hover:scale-110 duration-300" />
+              <Twitter className="w-6 h-6 text-gray-400 hover:text-brand-primary transition-colors cursor-pointer hover:scale-110 duration-300" />
+              <Instagram className="w-6 h-6 text-gray-400 hover:text-brand-primary transition-colors cursor-pointer hover:scale-110 duration-300" />
+              <MessageCircle className="w-6 h-6 text-gray-400 hover:text-brand-primary transition-colors cursor-pointer hover:scale-110 duration-300" />
+              <Send className="w-6 h-6 text-gray-400 hover:text-brand-primary transition-colors cursor-pointer hover:scale-110 duration-300" />
             </div>
             
             <div className="flex flex-wrap items-center space-x-6 text-sm">

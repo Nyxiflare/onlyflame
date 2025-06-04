@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -66,13 +65,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				flame: {
-					orange: '#FF6B35',
-					red: '#F7931E',
-					purple: '#6B46C1',
-					pink: '#EC4899',
-					green: '#10B981',
-					yellow: '#F59E0B'
+				brand: {
+					primary: '#6366F1',
+					secondary: '#8B5CF6',
+					accent: '#EC4899',
+					success: '#10B981',
+					warning: '#F59E0B',
+					info: '#3B82F6'
 				}
 			},
 			borderRadius: {
@@ -145,10 +144,10 @@ export default {
 				},
 				'glow-pulse': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(255, 107, 53, 0.5)'
+						boxShadow: '0 0 20px rgba(99, 102, 241, 0.5)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(255, 107, 53, 0.8)'
+						boxShadow: '0 0 40px rgba(99, 102, 241, 0.8)'
 					}
 				},
 				'gradient-x': {
