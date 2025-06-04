@@ -1,14 +1,33 @@
-
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { DollarSign, Zap, Heart, Coins, Shield, Trophy, Star, User, Rocket, Check, Twitter, Instagram, MessageCircle, Send } from 'lucide-react';
+import FlameAnimation from '../components/FlameAnimation';
+import LiveTokenTracker from '../components/LiveTokenTracker';
+import TypingAnimation from '../components/TypingAnimation';
+import GlassmorphismCard from '../components/GlassmorphismCard';
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
+
+  const { ref: heroRef, inView: heroInView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const { ref: benefitsRef, inView: benefitsInView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const { ref: comparisonRef, inView: comparisonInView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const { ref: stepsRef, inView: stepsInView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   useEffect(() => {
     setIsVisible(true);
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const benefits = [
@@ -95,91 +114,197 @@ const Index = () => {
     "Creator community access"
   ];
 
+  const typingTexts = [
+    "Own your audience.",
+    "Launch your token.", 
+    "Get paid in crypto.",
+    "Build your empire."
+  ];
+
+  const RippleButton = ({ children, className, onClick, ...props }: any) => {
+    const [ripples, setRipples] = useState<Array<{ x: number; y: number; id: number }>>([]);
+
+    const createRipple = (e: React.MouseEvent) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const newRipple = { x, y, id: Date.now() };
+      
+      setRipples(prev => [...prev, newRipple]);
+      setTimeout(() => {
+        setRipples(prev => prev.filter(ripple => ripple.id !== newRipple.id));
+      }, 600);
+      
+      if (onClick) onClick(e);
+    };
+
+    return (
+      <motion.button
+        className={`relative overflow-hidden ${className}`}
+        onClick={createRipple}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        {...props}
+      >
+        {children}
+        {ripples.map(ripple => (
+          <motion.span
+            key={ripple.id}
+            className="absolute rounded-full bg-white/30 pointer-events-none"
+            style={{
+              left: ripple.x - 25,
+              top: ripple.y - 25,
+              width: 50,
+              height: 50,
+            }}
+            initial={{ scale: 0, opacity: 1 }}
+            animate={{ scale: 4, opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          />
+        ))}
+      </motion.button>
+    );
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black font-inter">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black font-inter overflow-x-hidden">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-gradient-to-r from-gray-900/90 via-gray-800/30 to-gray-900/90 backdrop-blur-sm border-b border-orange-500/20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className={`flex items-center space-x-3 ${isVisible ? 'animate-bounce-in' : 'opacity-0'}`}>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-primary to-brand-secondary p-2 animate-glow-pulse hover:scale-110 transition-transform duration-300">
+            <motion.div 
+              className="flex items-center space-x-3 relative"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              onMouseEnter={() => setIsLogoHovered(true)}
+              onMouseLeave={() => setIsLogoHovered(false)}
+            >
+              <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-brand-primary to-brand-secondary p-2 hover:scale-110 transition-transform duration-300">
+                <FlameAnimation 
+                  mouseX={mousePos.x} 
+                  mouseY={mousePos.y} 
+                  isHovered={isLogoHovered} 
+                />
                 <img 
                   src="/lovable-uploads/fe68abea-d36f-4339-8a82-66b2672c4756.png" 
                   alt="OnlyFlame Logo" 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain relative z-10"
                 />
               </div>
               <span className="text-2xl font-bold text-white">OnlyFlame</span>
-            </div>
+            </motion.div>
             
-            <nav className={`hidden md:flex items-center space-x-8 ${isVisible ? 'animate-slide-down' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-              <a href="#home" className="text-white hover:text-brand-primary transition-colors">Home</a>
-              <a href="#benefits" className="text-white hover:text-brand-primary transition-colors">Benefits</a>
-              <a href="#how-it-works" className="text-white hover:text-brand-primary transition-colors">How It Works</a>
-              <Button 
-                className={`bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:shadow-lg hover:shadow-brand-primary/50 hover:scale-105 transition-all duration-300 ${isVisible ? 'animate-bounce-in' : 'opacity-0'}`}
-                style={{ animationDelay: '0.4s' }}
+            <nav className="hidden md:flex items-center space-x-8">
+              {['Home', 'Benefits', 'How It Works'].map((item, index) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase().replace(' ', '-')}`}
+                  className="text-white hover:text-brand-primary transition-colors relative group"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  {item}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover:w-full"></span>
+                </motion.a>
+              ))}
+              <RippleButton
+                className="bg-gradient-to-r from-brand-primary to-brand-secondary text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-brand-primary/50 transition-all duration-300"
                 onClick={() => window.open('https://creators.onlyflame.live/', '_blank')}
               >
                 Apply Now
-              </Button>
+              </RippleButton>
             </nav>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="relative py-20 overflow-hidden">
+      <section ref={heroRef} id="home" className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-900/20 via-transparent to-brand-primary/10 animate-gradient-x"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className={`text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-success bg-clip-text text-transparent leading-tight ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            Own your audience.<br />
-            Launch your token.<br />
-            Get paid in crypto.
-          </h1>
+          <motion.h1 
+            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-success bg-clip-text text-transparent leading-tight"
+            initial={{ opacity: 0, y: 50 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            <TypingAnimation 
+              texts={typingTexts}
+              className="block"
+            />
+          </motion.h1>
           
-          <p className={`text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+          <motion.p 
+            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
             OnlyFlame helps adult content creators launch on-chain tokens, earn from fans, and control their economy — no crypto knowledge needed.
-          </p>
+          </motion.p>
+
+          {/* Live Token Tracker */}
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={heroInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <LiveTokenTracker />
+          </motion.div>
           
-          <div className={`flex flex-col items-center space-y-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-brand-primary to-brand-secondary text-white text-xl px-8 py-4 hover:shadow-2xl hover:shadow-brand-primary/50 hover:scale-105 transition-all duration-300 animate-glow-pulse"
+          <motion.div 
+            className="flex flex-col items-center space-y-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            <RippleButton
+              className="bg-gradient-to-r from-brand-primary to-brand-secondary text-white text-xl px-8 py-4 rounded-full hover:shadow-2xl hover:shadow-brand-primary/50 transition-all duration-300 animate-glow-pulse"
               onClick={() => window.open('https://creators.onlyflame.live/', '_blank')}
             >
               Apply Now
-            </Button>
-            <div className="flex items-center space-x-2 text-brand-success">
-              <Check className="w-5 h-5" />
-              <span className="text-lg font-semibold">Only 47 spots left</span>
-            </div>
-          </div>
+            </RippleButton>
+          </motion.div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-20">
+      <section ref={benefitsRef} id="benefits" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-center mb-16 text-white"
+            initial={{ opacity: 0, y: 30 }}
+            animate={benefitsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
             Why Choose OnlyFlame
-          </h2>
+          </motion.h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-              <Card 
-                key={index} 
-                className={`bg-gradient-to-br from-gray-800/50 to-orange-900/30 border-orange-500/30 hover:border-brand-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-brand-primary/20 group animate-fade-in-up`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={benefitsInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <CardContent className="p-6 text-center">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <benefit.icon className={`w-8 h-8 ${benefit.color}`} />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
-                  <p className="text-gray-400">{benefit.description}</p>
-                </CardContent>
-              </Card>
+                <GlassmorphismCard className="group">
+                  <CardContent className="p-6 text-center">
+                    <motion.div 
+                      className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 mb-4"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <benefit.icon className={`w-8 h-8 ${benefit.color}`} />
+                    </motion.div>
+                    <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
+                    <p className="text-gray-400">{benefit.description}</p>
+                  </CardContent>
+                </GlassmorphismCard>
+              </motion.div>
             ))}
           </div>
         </div>
