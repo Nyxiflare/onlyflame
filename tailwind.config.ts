@@ -66,9 +66,9 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brand: {
-					primary: '#6366F1',
-					secondary: '#8B5CF6',
-					accent: '#EC4899',
+					primary: '#F97316',
+					secondary: '#EA580C',
+					accent: '#FB923C',
 					success: '#10B981',
 					warning: '#F59E0B',
 					info: '#3B82F6'
@@ -144,10 +144,10 @@ export default {
 				},
 				'glow-pulse': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(99, 102, 241, 0.5)'
+						boxShadow: '0 0 20px rgba(249, 115, 22, 0.5)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(99, 102, 241, 0.8)'
+						boxShadow: '0 0 40px rgba(249, 115, 22, 0.8)'
 					}
 				},
 				'gradient-x': {

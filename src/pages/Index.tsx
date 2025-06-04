@@ -96,9 +96,9 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-indigo-900/20 to-black font-inter">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black font-inter">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-gradient-to-r from-black/90 via-indigo-900/30 to-black/90 backdrop-blur-sm border-b border-indigo-500/20">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-gray-900/90 via-gray-800/30 to-gray-900/90 backdrop-blur-sm border-b border-orange-500/20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className={`flex items-center space-x-3 ${isVisible ? 'animate-bounce-in' : 'opacity-0'}`}>
@@ -130,7 +130,7 @@ const Index = () => {
 
       {/* Hero Section */}
       <section id="home" className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/20 via-transparent to-brand-primary/10 animate-gradient-x"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-900/20 via-transparent to-brand-primary/10 animate-gradient-x"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <h1 className={`text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-success bg-clip-text text-transparent leading-tight ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             Own your audience.<br />
@@ -169,11 +169,11 @@ const Index = () => {
             {benefits.map((benefit, index) => (
               <Card 
                 key={index} 
-                className={`bg-gradient-to-br from-gray-900/50 to-indigo-900/30 border-indigo-500/30 hover:border-brand-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-brand-primary/20 group animate-fade-in-up`}
+                className={`bg-gradient-to-br from-gray-800/50 to-orange-900/30 border-orange-500/30 hover:border-brand-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-brand-primary/20 group animate-fade-in-up`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-6 text-center">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-gray-800 to-gray-700 mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <benefit.icon className={`w-8 h-8 ${benefit.color}`} />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
@@ -186,7 +186,7 @@ const Index = () => {
       </section>
 
       {/* Comparison Section */}
-      <section className="py-20 bg-gradient-to-r from-indigo-900/10 to-black/50">
+      <section className="py-20 bg-gradient-to-r from-orange-900/10 to-black/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">OnlyFans vs OnlyFlame</h2>
@@ -194,7 +194,7 @@ const Index = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-gray-900/50 to-indigo-900/30 rounded-lg overflow-hidden border border-indigo-500/30">
+            <div className="bg-gradient-to-r from-gray-800/50 to-orange-900/30 rounded-lg overflow-hidden border border-orange-500/30">
               <div className="grid grid-cols-3 bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-semibold">
                 <div className="p-4 text-center">Feature</div>
                 <div className="p-4 text-center border-l border-white/20">OnlyFans</div>
@@ -204,12 +204,12 @@ const Index = () => {
               {comparison.map((item, index) => (
                 <div 
                   key={index} 
-                  className={`grid grid-cols-3 border-t border-indigo-500/20 animate-fade-in-up`}
+                  className={`grid grid-cols-3 border-t border-orange-500/20 animate-fade-in-up`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="p-4 text-white font-medium">{item.feature}</div>
-                  <div className="p-4 text-red-400 border-l border-indigo-500/20">{item.onlyfans}</div>
-                  <div className="p-4 text-brand-success border-l border-indigo-500/20 font-semibold">{item.onlyflame}</div>
+                  <div className="p-4 text-red-400 border-l border-orange-500/20">{item.onlyfans}</div>
+                  <div className="p-4 text-brand-success border-l border-orange-500/20 font-semibold">{item.onlyflame}</div>
                 </div>
               ))}
             </div>
@@ -233,7 +233,7 @@ const Index = () => {
                   className={`text-center group animate-fade-in-up`}
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-gray-900 to-indigo-900 mb-6 group-hover:scale-110 transition-all duration-300 border-2 border-indigo-500/30 group-hover:border-brand-primary/50`}>
+                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-gray-800 to-orange-900 mb-6 group-hover:scale-110 transition-all duration-300 border-2 border-orange-500/30 group-hover:border-brand-primary/50`}>
                     <step.icon className={`w-10 h-10 ${step.color}`} />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
@@ -246,7 +246,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-brand-primary/10 via-indigo-900/20 to-brand-secondary/10">
+      <section className="py-20 bg-gradient-to-r from-brand-primary/10 via-orange-900/20 to-brand-secondary/10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
             Ready to Transform Your Creator Economy?
@@ -287,7 +287,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-black/80 border-t border-indigo-500/20">
+      <footer className="py-12 bg-black/80 border-t border-orange-500/20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-3 mb-6 md:mb-0">
